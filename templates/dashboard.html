@@ -1,0 +1,32 @@
+{% extends "base_admin.html" %}
+{% block content %}
+
+<h2 class="text-center mt-4">📊 Welcome Admin</h2>
+
+<div class="admin-section">
+  <div class="card">
+    <h3>📅 Manage Events</h3>
+    <p>Add and view all upcoming events.</p>
+    <a href="/add_event" class="btn">➕ Add Event</a>
+  </div>
+
+  <div class="card">
+    <h3>📝 RSVP Requests</h3>
+    <p>Approve or reject RSVP submissions.</p>
+    <a href="/rsvp_requests" class="btn">📥 View Requests</a>
+  </div>
+
+  <div class="card">
+    <h3>🏛️ Add Mandir Info</h3>
+    <p>(Future scope - manage mandir data.)</p>
+    <a href="#" class="btn disabled">🔒 Coming Soon</a>
+  </div>
+
+  <div class="card danger">
+    <h3>🚪 Logout</h3>
+    <p>End admin session securely.</p>
+    <a href="/logout" class="btn danger">Logout Now</a>
+  </div>
+</div>
+
+{% endblock %}

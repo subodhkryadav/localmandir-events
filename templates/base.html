@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSVP Mandir Event 🙏</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>🙏 RSVP for {{ event_name }}</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </div>
+</header>
+
+<section class="form-section">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flash">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/rsvp?event_id={{ event_id }}" class="event-form">
+            <label>🙋 Your Name:</label>
+            <input type="text" name="name" required>
+
+            <label>📧 Email:</label>
+            <input type="email" name="email" required>
+
+            <label>🏙️ City:</label>
+            <input type="text" name="city" required>
+
+            <button type="submit" class="btn">✅ Confirm RSVP</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 LocalMandir Events | Your devotion is noted 🙏</p>
+    </div>
+</footer>
+
+</body>
+</html>

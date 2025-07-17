@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalMandir Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="logo">🛕 LocalMandir Admin</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/add_event">Add Event</a>
+      <a href="/rsvp_requests">RSVP Requests</a>
+      <a href="/logout" class="logout-btn">🚪 Logout</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-msgs">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="admin-footer">
+    <p>© 2025 LocalMandir. Built with ❤️</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🛕 LocalMandir Events | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="mandir-header">
+    <div class="overlay">
+        <h1>📿 LocalMandir Events</h1>
+        <p>Join Bhakti-filled Events Around You 🙏</p>
+        <nav>
+            <a href="/" class="active">🏠 Home</a>
+            <a href="/add_event">➕ Add Event</a>
+            <a href="/login">🔐 Admin Login</a>
+        </nav>
+    </div>
+</header>
+
+<section class="form-section">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        {% if events %}
+        <div class="event-list">
+            {% for event in events %}
+            <div class="event-card">
+                <h3>🪔 {{ event['event_name'] }} ({{ event['event_type'] }})</h3>
+                <p>📅 <strong>Date:</strong> {{ event['event_date'] }}</p>
+                <p>🕘 <strong>Time:</strong> {{ event['event_time'] }}</p>
+                <p>📍 <strong>Location:</strong> {{ event['location'] }}, {{ event['city'] }}</p>
+                <p>📝 <strong>About:</strong> {{ event['description'] }}</p>
+                <a href="/rsvp?event_id={{ event['event_id'] }}" class="rsvp-link">✅ RSVP Now</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p style="text-align:center; color: #ff5722;">No upcoming events found. Please check back later.</p>
+        {% endif %}
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 LocalMandir Events | Powered by Devotion 🕉️</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🙏 RSVP for {{ event_name }} | LocalMandir</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Mandir Header with Banner -->
+<header class="mandir-header">
+    <div class="overlay">
+        <h1>📝 RSVP for: {{ event_name }}</h1>
+        <p>Join the divine celebration with devotion 🙏</p>
+        <nav>
+            <a href="/">🏠 Home</a>
+        </nav>
+    </div>
+</header>
+
+<!-- RSVP Form Section -->
+<section class="form-section">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/rsvp?event_id={{ event_id }}" class="event-form sacred-card">
+            <h2>📿 Your Participation Details</h2>
+
+            <div class="form-group">
+                <label>🙋 Full Name</label>
+                <input type="text" name="name" placeholder="e.g., Ravi Kumar" required>
+            </div>
+
+            <div class="form-group">
+                <label>📧 Email Address</label>
+                <input type="email" name="email" placeholder="e.g., ravi@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>🏙️ Your City</label>
+                <input type="text" name="city" placeholder="e.g., Varanasi" required>
+            </div>
+
+            <div class="form-group center">
+                <button type="submit" class="btn sacred-btn">✅ Confirm RSVP</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 LocalMandir Events | Jai Shree Ram 🕉️</p>
+    </div>
+</footer>
+
+</body>
+</html>
