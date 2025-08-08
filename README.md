@@ -54,14 +54,14 @@ localmandir-events/
 
 ### 1. Clone the Repository
 
-```bash
+``bash
 git clone https://github.com/subodhkryadav/localmandir-events.git
 cd localmandir-events
-
+---
 
 ### 2. (Optional) Create Virtual Environment
 
-```bash
+``bash
 python -m venv venv
 venv\Scripts\activate      # On Windows
 # OR
